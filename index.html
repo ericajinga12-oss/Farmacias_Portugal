@@ -4,191 +4,570 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Farmácias Portugal - Sistema de Vacinação</title>
+
+  <!-- ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Segoe UI',sans-serif;
     }
 
-    body {
-      background: #f5f7fa;
-      color: #1f2937;
+    body{
+      background:#f5f7fa;
+      color:#1f2937;
+      overflow-x:hidden;
     }
 
-    header {
-      background: #008f5a;
-      color: white;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* HEADER */
+
+    header{
+      background:#008f5a;
+      padding:18px 40px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:white;
+      position:sticky;
+      top:0;
+      z-index:999;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
     }
 
-    header h1 {
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:24px;
+      font-weight:700;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-      transition: opacity 0.3s;
+    nav{
+      display:flex;
+      gap:25px;
     }
 
-    nav a:hover {
-      opacity: 0.8;
+    nav a{
+      text-decoration:none;
+      color:white;
+      font-weight:500;
+      transition:0.3s;
     }
 
-    .hero {
-      background: linear-gradient(135deg, #008f5a 0%, #00b074 100%);
-      color: white;
-      padding: 100px 40px;
-      text-align: center;
+    nav a:hover{
+      opacity:0.8;
     }
 
-    .hero h2 {
-      font-size: 42px;
-      margin-bottom: 20px;
+    /* HERO */
+
+    .hero{
+      position:relative;
+      min-height:90vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:white;
+      padding:80px 20px;
+      background:
+      linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+      url('https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
     }
 
-    .hero p {
-      font-size: 18px;
-      max-width: 800px;
-      margin: auto;
-      line-height: 1.6;
+    .hero-content{
+      max-width:900px;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      padding: 60px 40px;
-      max-width: 1200px;
-      margin: auto;
+    .hero h1{
+      font-size:58px;
+      margin-bottom:25px;
+      line-height:1.1;
     }
 
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-      text-align: center;
+    .hero p{
+      font-size:20px;
+      line-height:1.7;
+      margin-bottom:35px;
     }
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
     }
 
-    .card h3 {
-      color: #008f5a;
-      margin-bottom: 15px;
-      font-size: 22px;
+    .btn{
+      padding:15px 30px;
+      border:none;
+      border-radius:50px;
+      font-size:16px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+      text-decoration:none;
     }
 
-    .card p {
-      color: #6b7280;
-      line-height: 1.5;
+    .btn-primary{
+      background:#00b074;
+      color:white;
     }
 
-    footer {
-      background: #111827;
-      color: #9ca3af;
-      text-align: center;
-      padding: 40px 20px;
-      margin-top: 60px;
+    .btn-primary:hover{
+      background:#009e68;
+      transform:translateY(-3px);
     }
 
-    /* CUSTOMIZAÇÃO DO DIALOGFLOW MESSENGER */
-    df-messenger {
-      --df-messenger-button-titlebar-color: #008f5a;
-      --df-messenger-send-icon: #008f5a;
-      --df-messenger-user-message-background-color: #008f5a;
-      --df-messenger-chat-background-color: #ffffff;
-      --df-messenger-font-family: 'Segoe UI', sans-serif;
-      --df-messenger-chat-window-height: 500px;
-      --df-messenger-chat-window-width: 370px;
+    .btn-secondary{
+      background:white;
+      color:#008f5a;
     }
 
-    @media(max-width: 600px) {
-      .hero h2 {
-        font-size: 28px;
+    .btn-secondary:hover{
+      transform:translateY(-3px);
+    }
+
+    /* INFO BAR */
+
+    .info-bar{
+      background:white;
+      margin-top:-60px;
+      position:relative;
+      z-index:5;
+      max-width:1200px;
+      margin-left:auto;
+      margin-right:auto;
+      border-radius:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.1);
+      padding:30px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .info-item{
+      text-align:center;
+    }
+
+    .info-item i{
+      font-size:36px;
+      color:#008f5a;
+      margin-bottom:15px;
+    }
+
+    .info-item h3{
+      margin-bottom:10px;
+      color:#111827;
+    }
+
+    .info-item p{
+      color:#6b7280;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    /* SERVICES */
+
+    .section-title{
+      text-align:center;
+      margin-top:90px;
+      margin-bottom:50px;
+    }
+
+    .section-title h2{
+      font-size:40px;
+      color:#111827;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#6b7280;
+      max-width:700px;
+      margin:auto;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+      max-width:1200px;
+      margin:auto;
+      padding:0 30px 80px;
+    }
+
+    .card{
+      background:white;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:25px;
+    }
+
+    .card-content h3{
+      color:#008f5a;
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    .card-content p{
+      color:#6b7280;
+      line-height:1.6;
+    }
+
+    /* CONTACT SECTION */
+
+    .contact{
+      background:#008f5a;
+      color:white;
+      padding:80px 20px;
+      text-align:center;
+    }
+
+    .contact h2{
+      font-size:42px;
+      margin-bottom:20px;
+    }
+
+    .contact-numbers{
+      margin-top:40px;
+      display:flex;
+      justify-content:center;
+      gap:25px;
+      flex-wrap:wrap;
+    }
+
+    .number-box{
+      background:white;
+      color:#008f5a;
+      padding:25px 35px;
+      border-radius:20px;
+      min-width:220px;
+      box-shadow:0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .number-box i{
+      font-size:30px;
+      margin-bottom:15px;
+    }
+
+    .number-box h3{
+      margin-bottom:10px;
+    }
+
+    .number-box p{
+      font-size:24px;
+      font-weight:bold;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#111827;
+      color:#9ca3af;
+      text-align:center;
+      padding:35px 20px;
+    }
+
+    footer p{
+      margin-bottom:10px;
+    }
+
+    /* BOTÃO CHAT */
+
+    .chat-help{
+      position:fixed;
+      bottom:105px;
+      right:25px;
+      background:#008f5a;
+      color:white;
+      width:65px;
+      height:65px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:28px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.25);
+      z-index:999;
+      animation:pulse 2s infinite;
+      cursor:pointer;
+    }
+
+    @keyframes pulse{
+      0%{
+        transform:scale(1);
       }
-      header {
-        padding: 15px 20px;
-        flex-direction: column;
-        gap: 10px;
+      50%{
+        transform:scale(1.08);
       }
-      nav a {
-        margin: 0 10px;
-        font-size: 14px;
+      100%{
+        transform:scale(1);
       }
     }
+
+    /* DIALOGFLOW */
+
+    df-messenger{
+      --df-messenger-button-titlebar-color:#008f5a;
+      --df-messenger-send-icon:#008f5a;
+      --df-messenger-user-message-background-color:#008f5a;
+      --df-messenger-chat-background-color:#ffffff;
+      --df-messenger-font-family:'Segoe UI',sans-serif;
+      --df-messenger-chat-window-width:380px;
+      --df-messenger-chat-window-height:520px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      header{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero h1{
+        font-size:38px;
+      }
+
+      .hero p{
+        font-size:17px;
+      }
+
+      .section-title h2{
+        font-size:32px;
+      }
+
+      .contact h2{
+        font-size:30px;
+      }
+
+    }
+
   </style>
 </head>
+
 <body>
 
+  <!-- HEADER -->
+
   <header>
-    <h1><span>⚕️</span> Farmácias Portugal</h1>
+
+    <div class="logo">
+      <i class="fa-solid fa-shield-heart"></i>
+      <span>Farmácias Portugal</span>
+    </div>
+
     <nav>
       <a href="#">Início</a>
       <a href="#">Vacinação</a>
       <a href="#">Farmácias</a>
       <a href="#">SNS24</a>
+      <a href="#">Contacto</a>
     </nav>
+
   </header>
 
+  <!-- HERO -->
+
   <section class="hero">
-    <h2>Agendamento de Vacinação Digital</h2>
-    <p>
-      Bem-vindo ao portal oficial para marcação de vacinas (Gripe e COVID-19). 
-      Utilize o nosso assistente virtual inteligente no canto inferior direito para verificar stock e validar o seu agendamento.
-    </p>
+
+    <div class="hero-content">
+
+      <h1>Agendamento Inteligente de Vacinação</h1>
+
+      <p>
+        Plataforma digital nacional para marcação de vacinas COVID-19 e Gripe.
+        Consulte disponibilidade em tempo real, valide o número SNS e fale com o assistente virtual inteligente.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#" class="btn btn-primary">
+          Marcar Vacina
+        </a>
+
+        <a href="#" class="btn btn-secondary">
+          Consultar Farmácias
+        </a>
+      </div>
+
+    </div>
+
   </section>
+
+  <!-- INFO -->
+
+  <section class="info-bar">
+
+    <div class="info-item">
+      <i class="fa-solid fa-id-card"></i>
+      <h3>Validação SNS</h3>
+      <p>Ligação segura ao sistema nacional de saúde para autenticação em tempo real.</p>
+    </div>
+
+    <div class="info-item">
+      <i class="fa-solid fa-robot"></i>
+      <h3>Assistente IA</h3>
+      <p>Chatbot inteligente para responder dúvidas e confirmar elegibilidade.</p>
+    </div>
+
+    <div class="info-item">
+      <i class="fa-solid fa-syringe"></i>
+      <h3>Vacinação Segura</h3>
+      <p>Seguimos as normas oficiais da DGS para máxima segurança clínica.</p>
+    </div>
+
+    <div class="info-item">
+      <i class="fa-solid fa-map-location-dot"></i>
+      <h3>Rede Nacional</h3>
+      <p>Centenas de farmácias aderentes em todo o território português.</p>
+    </div>
+
+  </section>
+
+  <!-- SERVIÇOS -->
+
+  <div class="section-title">
+    <h2>Serviços Disponíveis</h2>
+    <p>
+      Soluções digitais modernas para facilitar o acesso rápido à vacinação em Portugal.
+    </p>
+  </div>
 
   <section class="cards">
+
     <div class="card">
-      <h3>Identificação SNS</h3>
-      <p>O nosso sistema valida o seu número de utente em tempo real para um registo seguro no histórico clínico nacional.</p>
+
+      <img src="https://images.unsplash.com/photo-1588776814546-ec7e0d9f0b2c?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="card-content">
+        <h3>Triagem Inteligente</h3>
+        <p>
+          O sistema analisa automaticamente os critérios clínicos antes do agendamento.
+        </p>
+      </div>
+
     </div>
 
     <div class="card">
-      <h3>Triagem Inteligente</h3>
-      <p>A IA realiza uma triagem clínica automática para garantir que está apto para a vacinação, seguindo normas da DGS.</p>
+
+      <img src="https://images.unsplash.com/photo-1585435557343-3b092031d4f7?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="card-content">
+        <h3>Farmácias Aderentes</h3>
+        <p>
+          Consulte farmácias com stock disponível e horários atualizados em tempo real.
+        </p>
+      </div>
+
     </div>
 
     <div class="card">
-      <h3>Rede Nacional</h3>
-      <p>Acesso direto ao inventário de vacinas em centenas de farmácias aderentes em todos os distritos de Portugal.</p>
+
+      <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="card-content">
+        <h3>Histórico Clínico</h3>
+        <p>
+          Todos os registos ficam sincronizados com o sistema nacional de saúde.
+        </p>
+      </div>
+
     </div>
+
   </section>
 
+  <!-- CONTACTOS -->
+
+  <section class="contact">
+
+    <h2>Linhas de Apoio</h2>
+
+    <p>
+      Necessita de ajuda? Utilize os contactos rápidos abaixo.
+    </p>
+
+    <div class="contact-numbers">
+
+      <div class="number-box">
+        <i class="fa-solid fa-phone"></i>
+        <h3>SNS24</h3>
+        <p>808 24 24 24</p>
+      </div>
+
+      <div class="number-box">
+        <i class="fa-solid fa-headset"></i>
+        <h3>Suporte</h3>
+        <p>210 000 000</p>
+      </div>
+
+      <div class="number-box">
+        <i class="fa-solid fa-truck-medical"></i>
+        <h3>Emergência</h3>
+        <p>112</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
   <footer>
-    <p>&copy; 2026 Farmácias Portugal - Projeto Solutions Consultant</p>
+
+    <p>© 2026 Farmácias Portugal</p>
+
+    <p>
+      Plataforma Digital de Vacinação e Assistência Inteligente
+    </p>
+
   </footer>
 
-  <!-- 
-    CONFIGURAÇÃO DO CHATBOT REAL (GOOGLE CLOUD DIALOGFLOW)
-    Este componente substitui o chat manual anterior.
-    Ele liga-se ao Agent ID e Project ID que configuraste no Cloud Shell.
-  -->
+  <!-- ÍCONE FLUTUANTE DO CHATBOT -->
+
+  <div class="chat-help">
+    <i class="fa-solid fa-comments"></i>
+  </div>
+
+  <!-- DIALOGFLOW -->
+
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger-cx/bootstrap.js?v=1"></script>
+
   <df-messenger
     location="us"
     project-id="ujet-intern-sandbox-3866"
     agent-id="8c41bd41-6486-4daf-9a3a-e48bd2c92da9"
     language-code="pt-pt">
+
     <df-messenger-chat-bubble
-      chat-title="Assistente Digital de Vacinação">
+      chat-title="Assistente Virtual">
     </df-messenger-chat-bubble>
+
   </df-messenger>
 
 </body>
