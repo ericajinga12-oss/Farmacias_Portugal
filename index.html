@@ -1,254 +1,346 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmácias Portugal - Vacinação</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        /* RESET */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
+<title>Farmácias Portugal - Vacinação</title>
 
-        body {
-            background: #f5f7fa;
-            color: #1f2937;
-            overflow-x: hidden;
-        }
+<!-- ICONS -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-        /* HEADER */
-        header {
-            background: #008f5a; /* Verde oficial das Farmácias de Portugal */
-            color: white;
-            padding: 18px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+<style>
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 24px;
-            font-weight: bold;
-        }
+/* RESET */
 
-        nav {
-            display: flex;
-            gap: 25px;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-            font-weight: 500;
-        }
+body{
+    background:#f5f7fa;
+    color:#1f2937;
+    overflow-x:hidden;
+}
 
-        nav a:hover {
-            opacity: 0.7;
-        }
+/* HEADER */
 
-        /* HERO */
-        .hero {
-            min-height: 92vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-                        url('https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1600&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
+header{
+    background:#008f5a;
+    color:white;
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:999;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
 
-        .hero-content {
-            max-width: 900px;
-        }
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:24px;
+    font-weight:bold;
+}
 
-        .hero h1 {
-            font-size: 60px;
-            margin-bottom: 25px;
-        }
+nav{
+    display:flex;
+    gap:25px;
+}
 
-        .hero p {
-            font-size: 20px;
-            line-height: 1.7;
-            margin-bottom: 35px;
-        }
+nav a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+    font-weight:500;
+}
 
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+nav a:hover{
+    opacity:0.7;
+}
 
-        .btn {
-            padding: 16px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
+/* HERO */
 
-        .btn-primary {
-            background: #00b074;
-            color: white;
-        }
+.hero{
+    min-height:92vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 20px;
 
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            background: #009764;
-        }
+    background:
+    linear-gradient(rgba(0,0,0,0.55),
+    rgba(0,0,0,0.55)),
 
-        .btn-secondary {
-            background: white;
-            color: #008f5a;
-        }
+    url('https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1600&auto=format&fit=crop');
 
-        .btn-secondary:hover {
-            transform: translateY(-5px);
-        }
+    background-size:cover;
+    background-position:center;
 
-        /* TITULO */
-        .section-title {
-            text-align: center;
-            margin-top: 80px;
-            margin-bottom: 50px;
-        }
+    color:white;
+}
 
-        .section-title h2 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
+.hero-content{
+    max-width:900px;
+}
 
-        .section-title p {
-            color: #6b7280;
-        }
+.hero h1{
+    font-size:60px;
+    margin-bottom:25px;
+}
 
-        /* CARDS */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 30px 80px;
-        }
+.hero p{
+    font-size:20px;
+    line-height:1.7;
+    margin-bottom:35px;
+}
 
-        .card {
-            background: white;
-            border-radius: 22px;
-            overflow: hidden;
-            transition: 0.4s;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
 
-        .card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 18px 35px rgba(0,0,0,0.15);
-        }
+.btn{
+    padding:16px 32px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
 
-        .card img {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-        }
+.btn-primary{
+    background:#00b074;
+    color:white;
+}
 
-        .card-content {
-            padding: 25px;
-        }
+.btn-primary:hover{
+    transform:translateY(-5px);
+    background:#009764;
+}
 
-        .card-content h3 {
-            color: #008f5a;
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
+.btn-secondary{
+    background:white;
+    color:#008f5a;
+}
 
-        .card-content p {
-            line-height: 1.6;
-            color: #6b7280;
-        }
+.btn-secondary:hover{
+    transform:translateY(-5px);
+}
 
-        /* CONTACTOS */
-        .contact {
-            background: #008f5a;
-            color: white;
-            padding: 90px 20px;
-            text-align: center;
-        }
+/* TITULO */
 
-        .contact h2 {
-            font-size: 44px;
-            margin-bottom: 20px;
-        }
+.section-title{
+    text-align:center;
+    margin-top:80px;
+    margin-bottom:50px;
+}
 
-        .contact-numbers {
-            margin-top: 45px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
+.section-title h2{
+    font-size:42px;
+    margin-bottom:15px;
+}
 
-        .number-box {
-            background: white;
-            color: #008f5a;
-            padding: 30px 35px;
-            border-radius: 25px;
-            min-width: 240px;
-            transition: 0.4s;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
+.section-title p{
+    color:#6b7280;
+}
 
-        .number-box:hover {
-            transform: translateY(-15px);
-        }
+/* CARDS */
 
-        .number-box i {
-            font-size: 38px;
-            margin-bottom: 18px;
-        }
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+    max-width:1200px;
+    margin:auto;
+    padding:0 30px 80px;
+}
 
-        .number-box h3 {
-            margin-bottom: 12px;
-            font-size: 22px;
-        }
+.card{
+    background:white;
+    border-radius:22px;
+    overflow:hidden;
+    transition:0.4s;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
 
-        .number-box p {
-            font-size: 28px;
-            font-weight: bold;
-        }
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 18px 35px rgba(0,0,0,0.15);
+}
 
-        footer {
-            background: #111827;
-            color: #9ca3af;
-            text-align: center;
-            padding: 35px 20px;
-        }
-    </style>
+.card img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:25px;
+}
+
+.card-content h3{
+    color:#008f5a;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.card-content p{
+    line-height:1.6;
+    color:#6b7280;
+}
+
+/* CONTACTOS */
+
+.contact{
+    background:#008f5a;
+    color:white;
+    padding:90px 20px;
+    text-align:center;
+}
+
+.contact h2{
+    font-size:44px;
+    margin-bottom:20px;
+}
+
+.contact p{
+    font-size:18px;
+}
+
+/* NUMEROS */
+
+.contact-numbers{
+    margin-top:45px;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.number-box{
+    background:white;
+    color:#008f5a;
+    padding:30px 35px;
+    border-radius:25px;
+    min-width:240px;
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    transition:0.4s;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.number-box:hover{
+    transform:translateY(-15px) scale(1.04);
+    box-shadow:0 25px 40px rgba(0,0,0,0.25);
+}
+
+.number-box i{
+    font-size:38px;
+    margin-bottom:18px;
+    transition:0.4s;
+}
+
+.number-box:hover i{
+    transform:scale(1.2) rotate(10deg);
+}
+
+.number-box h3{
+    margin-bottom:12px;
+    font-size:22px;
+}
+
+.number-box p{
+    font-size:28px;
+    font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111827;
+    color:#9ca3af;
+    text-align:center;
+    padding:35px 20px;
+}
+
+/* CHAT UJET */
+
+#ujet-widget-container{
+    font-family:'Segoe UI',sans-serif !important;
+}
+
+#ujet-widget-container iframe{
+    border-radius:25px !important;
+    overflow:hidden !important;
+    box-shadow:0 15px 40px rgba(0,0,0,0.25) !important;
+    animation:chatUp 0.5s ease;
+}
+
+@keyframes chatUp{
+
+    from{
+        opacity:0;
+        transform:translateY(60px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+}
+
+</style>
+
 </head>
+
 <body>
 
+<!-- HEADER -->
+
 <header>
+
     <div class="logo">
         <i class="fa-solid fa-shield-heart"></i>
         <span>Farmácias Portugal</span>
     </div>
+
     <nav>
         <a href="#">Início</a>
         <a href="#">Vacinação</a>
@@ -256,81 +348,228 @@
         <a href="#">SNS24</a>
         <a href="#">Contacto</a>
     </nav>
+
 </header>
 
+<!-- HERO -->
+
 <section class="hero">
+
     <div class="hero-content">
+
         <h1>Agendamento Inteligente de Vacinação</h1>
-        <p>Plataforma nacional para marcação de vacinas COVID-19 e Gripe. Consulte disponibilidade em tempo real e fale com o nosso assistente virtual.</p>
+
+        <p>
+            Plataforma nacional para marcação de vacinas COVID-19 e Gripe.
+            Consulte disponibilidade em tempo real e fale com o nosso assistente virtual.
+        </p>
+
         <div class="hero-buttons">
-            <a href="#" class="btn btn-primary">Marcar Vacina</a>
-            <a href="#" class="btn btn-secondary">Consultar Farmácias</a>
+
+            <a href="#" class="btn btn-primary">
+                Marcar Vacina
+            </a>
+
+            <a href="#" class="btn btn-secondary">
+                Consultar Farmácias
+            </a>
+
         </div>
+
     </div>
+
 </section>
 
+<!-- SERVIÇOS -->
+
 <div class="section-title">
+
     <h2>Serviços Disponíveis</h2>
-    <p>Sistema digital moderno para apoio à vacinação em Portugal.</p>
+
+    <p>
+        Sistema digital moderno para apoio à vacinação em Portugal.
+    </p>
+
 </div>
 
 <section class="cards">
+
     <div class="card">
+
         <img src="https://images.unsplash.com/photo-1588776814546-ec7e0d9f0b2c?q=80&w=1200&auto=format&fit=crop">
+
         <div class="card-content">
+
             <h3>Triagem Inteligente</h3>
-            <p>Verificação automática de elegibilidade para vacinação.</p>
+
+            <p>
+                Verificação automática de elegibilidade para vacinação.
+            </p>
+
         </div>
+
     </div>
+
     <div class="card">
+
         <img src="https://images.unsplash.com/photo-1585435557343-3b092031d4f7?q=80&w=1200&auto=format&fit=crop">
+
         <div class="card-content">
+
             <h3>Farmácias Aderentes</h3>
-            <p>Consulta de stock e disponibilidade em tempo real.</p>
+
+            <p>
+                Consulta de stock e disponibilidade em tempo real.
+            </p>
+
         </div>
+
     </div>
+
+    <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+
+            <h3>Histórico Clínico</h3>
+
+            <p>
+                Registos sincronizados com o sistema nacional de saúde.
+            </p>
+
+        </div>
+
+    </div>
+
 </section>
+
+<!-- CONTACTOS -->
 
 <section class="contact">
+
     <h2>Linhas de Apoio</h2>
+
+    <p>
+        Utilize os contactos rápidos abaixo.
+    </p>
+
     <div class="contact-numbers">
+
         <div class="number-box">
+
             <i class="fa-solid fa-phone-volume"></i>
+
             <h3>SNS24</h3>
+
             <p>808 24 24 24</p>
+
         </div>
+
         <div class="number-box">
+
             <i class="fa-solid fa-headset"></i>
+
             <h3>Suporte Técnico</h3>
+
             <p>210 000 000</p>
+
         </div>
+
+        <div class="number-box">
+
+            <i class="fa-solid fa-truck-medical"></i>
+
+            <h3>Emergência</h3>
+
+            <p>112</p>
+
+        </div>
+
     </div>
+
 </section>
 
+<!-- FOOTER -->
+
 <footer>
-    <p>© 2026 Farmácias Portugal | Plataforma Digital de Vacinação</p>
+
+    <p>© 2026 Farmácias Portugal</p>
+
+    <p>
+        Plataforma Digital de Vacinação
+    </p>
+
 </footer>
 
+<!-- UJET CHAT -->
+
 <script>
-    (function(u, j, e, t) {
-        var w = u.createElement(j); w.async = 1; w.src = e;
-        var s = u.getElementsByTagName(j)[0]; s.parentNode.insertBefore(w, s);
-        u.addEventListener("DOMContentLoaded", function() {
-            window.UJET.init({
-                companyName: "farmacias-portugal", // Identificador das Farmácias
-                tenant: "ujet-intern-sandbox-3866",
-                tokenUrl: "http://localhost/token.php", // URL que processa o token.php
-                features: {
-                    chat: true,
-                    voice: true,        /* Ativa a opção de CHAMADA de voz dentro do chat */
-                    endChatButton: true /* Ativa o botão para SAIR ou TERMINAR o chat */
-                },
-                options: {
-                    language: "pt-PT"
-                }
-            });
+(function(u, j, e) {
+
+    var w = u.createElement(j);
+    w.async = 1;
+    w.src = e;
+
+    var s = u.getElementsByTagName(j)[0];
+    s.parentNode.insertBefore(w, s);
+
+    u.addEventListener("DOMContentLoaded", function() {
+
+        window.UJET.init({
+
+            companyName: "farmacias-portugal",
+
+            tenant: "ujet-intern-sandbox-3866",
+
+            tokenUrl: "http://localhost/token.php",
+
+            features: {
+
+                /* CHAT */
+                chat: true,
+
+                /* CHAMADAS */
+                voice: true,
+
+                /* TERMINAR CHAT */
+                endChatButton: true
+
+            },
+
+            options: {
+
+                language: "pt-PT",
+
+                /* MENSAGEM */
+                welcomeMessage: "Olá 👋 Em que posso ajudar hoje?",
+
+                /* TITULO */
+                title: "Assistente Virtual",
+
+                /* POSIÇÃO */
+                position: "right",
+
+                /* COR */
+                primaryColor: "#008f5a",
+
+                /* TEXTO */
+                launcherText: "Falar com Assistente",
+
+                /* ÍCONE */
+                launcherIcon: "chat",
+
+                /* TAMANHO */
+                width: "380px",
+                height: "620px"
+
+            }
+
         });
-    })(document, "script", "https://widget.ujet.co/v2/widget.js");
+
+    });
+
+})(document, "script", "https://widget.ujet.co/v2/widget.js");
 </script>
 
 </body>
