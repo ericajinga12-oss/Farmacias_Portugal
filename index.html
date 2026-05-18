@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farmácias Portugal - Sistema de Vacinação</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      color: #1f2937;
+    }
+
+    header {
+      background: #008f5a;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #008f5a 0%, #00b074 100%);
+      color: white;
+      padding: 100px 40px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      color: #008f5a;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .card p {
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    /* CUSTOMIZAÇÃO DO DIALOGFLOW MESSENGER */
+    df-messenger {
+      --df-messenger-button-titlebar-color: #008f5a;
+      --df-messenger-send-icon: #008f5a;
+      --df-messenger-user-message-background-color: #008f5a;
+      --df-messenger-chat-background-color: #ffffff;
+      --df-messenger-font-family: 'Segoe UI', sans-serif;
+      --df-messenger-chat-window-height: 500px;
+      --df-messenger-chat-window-width: 370px;
+    }
+
+    @media(max-width: 600px) {
+      .hero h2 {
+        font-size: 28px;
+      }
+      header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 10px;
+      }
+      nav a {
+        margin: 0 10px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><span>⚕️</span> Farmácias Portugal</h1>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Vacinação</a>
+      <a href="#">Farmácias</a>
+      <a href="#">SNS24</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Agendamento de Vacinação Digital</h2>
+    <p>
+      Bem-vindo ao portal oficial para marcação de vacinas (Gripe e COVID-19). 
+      Utilize o nosso assistente virtual inteligente no canto inferior direito para verificar stock e validar o seu agendamento.
+    </p>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <h3>Identificação SNS</h3>
+      <p>O nosso sistema valida o seu número de utente em tempo real para um registo seguro no histórico clínico nacional.</p>
+    </div>
+
+    <div class="card">
+      <h3>Triagem Inteligente</h3>
+      <p>A IA realiza uma triagem clínica automática para garantir que está apto para a vacinação, seguindo normas da DGS.</p>
+    </div>
+
+    <div class="card">
+      <h3>Rede Nacional</h3>
+      <p>Acesso direto ao inventário de vacinas em centenas de farmácias aderentes em todos os distritos de Portugal.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 AGEIlhavo & Farmácias Portugal - Projeto Solutions Consultant</p>
+    <p style="font-size: 12px; margin-top: 10px;">Integrado com Google Cloud Vertex AI & UJET Sandbox</p>
+  </footer>
+
+  <!-- 
+    CONFIGURAÇÃO DO CHATBOT REAL (GOOGLE CLOUD DIALOGFLOW)
+    Este componente substitui o chat manual anterior.
+    Ele liga-se ao Agent ID e Project ID que configuraste no Cloud Shell.
+  -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger-cx/bootstrap.js?v=1"></script>
+  <df-messenger
+    location="us"
+    project-id="ujet-intern-sandbox-3866"
+    agent-id="8c41bd41-6486-4daf-9a3a-e48bd2c92da9"
+    language-code="pt-pt">
+    <df-messenger-chat-bubble
+      chat-title="Assistente Digital de Vacinação">
+    </df-messenger-chat-bubble>
+  </df-messenger>
+
+</body>
+</html>
